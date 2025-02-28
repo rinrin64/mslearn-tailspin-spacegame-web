@@ -9,25 +9,15 @@ pool:
 variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-  dotnetSdkVersion: '6.x'
+  dotnetSdkVersion: '8.x'
 
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET SDK $(dotnetSdkVersion)'
   inputs:
+    packageType: 'sdk'
     version: '$(dotnetSdkVersion)'
-
-- script: |
-    if [ -f /etc/os-release ]; then
-      . /etc/os-release
-      echo "OS: $NAME, Version: $VERSION"
-    elif [ -f /etc/lsb-release ]; then
-      . /etc/lsb-release
-      echo "OS: $DISTRIB_ID, Version: $DISTRIB_RELEASE"
-    else
-      echo "Unknown OS"
-    fi
-  displayName: 'Detect and Print OS Information'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: Npm@1
   displayName: 'Run npm install'
