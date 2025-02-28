@@ -60,6 +60,9 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
+- script: 'ls -R $(Build.SourcesDirectory)/TestResults/Coverage/'
+  displayName: 'List coverage directory contents'
+
 - task: DotNetCoreCLI@2
   displayName: 'Create code coverage report'
   inputs:
