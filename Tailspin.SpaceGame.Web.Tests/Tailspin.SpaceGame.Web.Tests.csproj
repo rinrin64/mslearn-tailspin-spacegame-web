@@ -14,12 +14,13 @@
 
   <ItemGroup>
     <PackageReference Include="nunit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" /> <!-- Update to the latest version -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" /> <!-- Update to the latest version -->
+    
+    <!-- Add this package for code coverage -->
+    <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Tailspin.SpaceGame.Web\Tailspin.SpaceGame.Web.csproj" />
   </ItemGroup>
-
-</Project>
