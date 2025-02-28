@@ -61,6 +61,9 @@ steps:
     projects: '**/*.Tests.csproj'
     resultsDirectory: '$(Build.SourcesDirectory)/TestResults/'
 
+- script: 'mkdir -p $(Build.SourcesDirectory)/TestResults/Coverage/'
+  displayName: 'Create coverage directory'
+
 - task: PublishTestResults@2
   displayName: 'Publish test results'
   inputs:
@@ -82,7 +85,7 @@ steps:
   displayName: 'Publish code coverage report'
   inputs:
     codeCoverageTool: 'cobertura'
-    summaryFileLocation: 
+    summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.cobertura.xml'
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
