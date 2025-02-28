@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <ProjectGuid>{773BA444-0D67-4F37-8762-17E108CCD5F5}</ProjectGuid>
-
+    
     <!-- Add these properties for code coverage -->
     <IsTestProject>true</IsTestProject>
     <CollectCoverage>true</CollectCoverage>
@@ -24,3 +24,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Tailspin.SpaceGame.Web\Tailspin.SpaceGame.Web.csproj" />
   </ItemGroup>
+
+</Project>
