@@ -17,6 +17,18 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
+- script: |
+    if [ -f /etc/os-release ]; then
+      . /etc/os-release
+      echo "OS: $NAME, Version: $VERSION"
+    elif [ -f /etc/lsb-release ]; then
+      . /etc/lsb-release
+      echo "OS: $DISTRIB_ID, Version: $DISTRIB_RELEASE"
+    else
+      echo "Unknown OS"
+    fi
+  displayName: 'Detect and Print OS Information'
+
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
