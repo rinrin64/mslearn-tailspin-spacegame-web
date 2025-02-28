@@ -54,6 +54,7 @@ steps:
     custom: tool
     arguments: 'restore'
 
+
 - task: DotNetCoreCLI@2
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
@@ -62,9 +63,12 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
+- script: 'ls -R $(Build.SourcesDirectory)/TestResults/Coverage/'
+  displayName: 'List coverage files'
+
 - script: |
     dotnet tool install --global dotnet-reportgenerator-globaltool
-    dotnet reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
+    dotnet reportgenerator -reports:$(Build.SourcesDirectory)/TestResults/Coverage/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
   displayName: 'Generate Code Coverage Report'
 
 - task: PublishCodeCoverageResults@1
